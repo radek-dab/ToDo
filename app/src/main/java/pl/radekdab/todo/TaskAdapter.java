@@ -59,6 +59,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         notifyItemInserted(position);
     }
 
+    public void moveItem(int from, int to) {
+        Log.d(TAG, "moveItem from " + from + " to " + to);
+        Task task = tasks.remove(from);
+        tasks.add(to, task);
+        notifyItemMoved(from, to);
+    }
+
     public Task removeItem(int position) {
         Log.d(TAG, "removeItem at position " + position);
         Task task = tasks.remove(position);
