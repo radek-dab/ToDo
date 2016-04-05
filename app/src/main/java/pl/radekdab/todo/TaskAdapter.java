@@ -50,13 +50,20 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     public void addItem() {
         Log.d(TAG, "addItem");
         tasks.add(new Task());
-        notifyItemInserted(tasks.size()-1);
+        notifyItemInserted(tasks.size() - 1);
     }
 
-    public void removeItem(int position) {
+    public void addItem(int position, Task task) {
+        Log.d(TAG, "addItem at position " + position);
+        tasks.add(position, task);
+        notifyItemInserted(position);
+    }
+
+    public Task removeItem(int position) {
         Log.d(TAG, "removeItem at position " + position);
-        tasks.remove(position);
+        Task task = tasks.remove(position);
         notifyItemRemoved(position);
+        return task;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
