@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
@@ -25,10 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
 
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         taskSaver = new SimpleTaskSaver(this);
         tasks = taskSaver.restore();
-
-        setContentView(R.layout.activity_main);
         taskAdapter = new TaskAdapter(this, tasks);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setAdapter(taskAdapter);
